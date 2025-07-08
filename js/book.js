@@ -15,14 +15,14 @@ class Book {
     price;
     publishedYear;
     genre;
-    likesCount;
+    likes;
     isLiked;
 
     comments = [];
 
     // #endregion properties
 
-    constructor(pName, pAuthor, pPrice, pPublishedYear, pGenre, pIsLiked = false) {
+    constructor(pName, pAuthor, pPrice, pPublishedYear, pGenre, pLikes, pComments = [], pIsLiked = false,) {
         
         Book.bookCount++;
 
@@ -40,6 +40,7 @@ class Book {
         this.genre = pGenre;
         this.likes = pLikes;
         this.isLiked = pIsLiked;
+        this.comments = pComments;
 
         // render Card
         this.renderBookCard();

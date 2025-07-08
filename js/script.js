@@ -1,4 +1,4 @@
-let books = [
+const books = [
     {
         "name": "Die Geheimnisse des Ozeans",
         "author": "Clara Meer",
@@ -174,6 +174,63 @@ let books = [
     }
 ];
 
+let allBooks = [];
+let allConvertedBooks = [];
 
 
+function init() {
+    getDataFromLS();
+    // renderBookCards();
+}
 
+function getDataFromLS() {
+    const bookObjArr = JSON.parse(localStorage.getItem('books'));
+
+    if(bookObjArr == null) {
+        setDataToLS();
+        bookObjArr = JSON.parse(localStorage.getItem('books'));
+    }
+
+    allBooks.splice(0, allBooks.length);
+    allBooks = bookObjArr;
+
+    for(let i = 0; i < allBooks.length; i++) {
+        const preBook = allBooks[i];
+
+        allConvertedBooks.push(new Book(
+            preBook.name,
+            preBook.author,
+            preBook.price,
+            preBook.publishedYear,
+            preBook.genre,
+            preBook.comments,
+            preBook.isLiked
+        ));
+    }
+}
+
+function setDataToLS() {
+    if(allConvertedBooks.length == 0) {
+        initializeData();
+    }
+    localStorage.setItem('books', JSON.stringify(allConvertedBooks));
+}
+
+function initializeData() {
+    for(let i = 0; i < books; i++) {
+        book = books[i];
+
+            allConvertedBooks.push(new Book(
+            book.name,
+            book.author,
+            book.price,
+            book.publishedYear,
+            book.genre,
+            book.comments,
+            book.isLiked
+        ));
+    }
+
+    
+
+}
