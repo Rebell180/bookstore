@@ -1,3 +1,13 @@
+/* #region Header */
+
+/* #endregion Header */
+
+
+
+
+
+
+
 /* #region Book Card */
 
 .book-card {
@@ -131,6 +141,7 @@
                 background-color: rgba(50, 50, 50, 0.3);
                 color: white;
                 border: 2px solid rgba(0, 0, 0, 0.11);
+                border-radius: 4px;;
                 
             }
 
@@ -156,8 +167,6 @@
 }
 
 /* #endregion Book Card */
-
-
 
 /* #region googled style for transparent scrollbar */
 
