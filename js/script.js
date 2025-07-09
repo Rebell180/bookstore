@@ -184,7 +184,7 @@ function init() {
 }
 
 function getDataFromLS() {
-    const bookObjArr = JSON.parse(localStorage.getItem('books'));
+    let bookObjArr = JSON.parse(localStorage.getItem('books'));
 
     if(bookObjArr == null) {
         setDataToLS();
@@ -217,7 +217,7 @@ function setDataToLS() {
 }
 
 function initializeData() {
-    for(let i = 0; i < books; i++) {
+    for(let i = 0; i < books.length; i++) {
         book = books[i];
 
             allConvertedBooks.push(new Book(
@@ -231,6 +231,9 @@ function initializeData() {
         ));
     }
 
-    
+
 
 }
+
+
+init();

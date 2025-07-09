@@ -53,11 +53,11 @@ class Book {
         const bookContainerRef = document.getElementById('book_container');
         bookContainerRef.innerHTML += getBookTemplate(this);
 
-        const commentButtonRef = document.getElementById(this.commentBtnId);
-        commentButtonRef.addEventListener('click', () => this.addComment());
+        // const commentButtonRef = document.getElementById(this.commentBtnId);
+        // commentButtonRef.addEventListener('click', () => this.addComment());
 
-        const likeIconRef = document.getElementById(this.likeIconId);
-        likeIconRef.addEventListener('click', () => this.toggleLike());
+        // const likeIconRef = document.getElementById(this.likeIconId);
+        // likeIconRef.addEventListener('click', () => this.toggleLike());
     }
 
     toggleLike() {
