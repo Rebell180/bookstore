@@ -95,20 +95,15 @@ static toggleLike(index) {
     if(currentBook.isLiked) {
         currentBook.isLiked = false;
         currentBook.likes = currentBook.likes - 1; 
+        currentBook.likeBtnSrc = "./assets/icons/like_empty.png";
     }
     else {
         currentBook.isLiked = true;
         currentBook.likes = currentBook.likes + 1;
-    }
-
-    if(this.isLiked) {
         currentBook.likeBtnSrc = "./assets/icons/like_full.png";
-    } 
-    else {
-        currentBook.likeBtnSrc = "./assets/icons/like_empty.png";
     }
     
-    // LocalStorageManager.setInitialDataToLS();
+    LocalStorageManager.setInitialDataToLS();
     BookManager.showBooks();
 }
 
