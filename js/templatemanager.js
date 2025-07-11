@@ -1,3 +1,5 @@
+import { Book } from "./book.js";
+
 export class TemplateManager {
 
     /**

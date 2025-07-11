@@ -51,13 +51,8 @@ export class Book {
         this.comments = pComments;
 
         this.formattedPrice = this.formatPrice();
+        this.likeBtnSrc = this.updatelikeBtnSrc();
 
-        if(pIsLiked){
-            this.likeBtnSrc = "/assets/icons/like_full.png";
-        }
-        else {
-            this.likeBtnSrc = "/assets/icons/like_empty.png";
-        }
     }
 
     // #region methods
@@ -70,6 +65,17 @@ export class Book {
         let fPrice = this.price.toFixed(2);
         fPrice = fPrice.replace('.', ',');
         return fPrice + " €";
+    }
+
+    /**
+     * Check the current state of isLiked and set icon path.
+     */
+    updatelikeBtnSrc() {
+        let temppath = "./assets/icons/like_empty.png";
+        if(this.isLiked) {
+            temppath =  "./assets/icons/like_full.png";
+        }
+        return temppath;
     }
 
     // #endregion methods
