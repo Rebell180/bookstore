@@ -1,18 +1,25 @@
-class Book {
+
+/**
+ * An object class to define a book. 
+ */
+export class Book {
 
     // #region properties
     static bookCount = 0;
     
     id;
     likeIconId;
+    likeBtnSrc;
     likeCounterId;
     commentId;
+    commentInputId;
     commentBtnId;
-    commentContainerId;
+    commenttableId;
 
     name;
     author;
     price;
+    formattedPrice;
     publishedYear;
     genre;
     likes;
@@ -22,105 +29,52 @@ class Book {
 
     // #endregion properties
 
-    constructor(pName, pAuthor, pPrice, pPublishedYear, pGenre, pLikes, pComments = [], pIsLiked = false,) {
+    constructor(pName, pAuthor, pPrice, pPublishedYear, pGenre, pLikes, pIsLiked, pComments, ) {
         
         Book.bookCount++;
 
-        this.id = "book_" + Book.bookCount;
-        this.likeIconId = this.id + "_icon";
-        this.likeCounterId = this.id + "_counter";
-        this.commentId = this.id + "_comment";
-        this.commentBtnId = this.commentId + "_btn";
-        this.commentContainerId = this.commentId + "_container";
+        this.id = "book-" + Book.bookCount;
+        this.likeIconId = this.id + "-icon";
+        this.likeCounterId = this.id + "-counter";
+        this.commentId = this.id + "-comment";
+        this.commentInputId = this.commentId + "-input";
+        this.commentBtnId = this.commentId + "-btn";
+        this.commentTableId = this.commentId + "-table";
 
         this.name = pName;
         this.author = pAuthor;
-        this.price = pPrice; 
+        this.price = pPrice;
         this.publishedYear = pPublishedYear;
         this.genre = pGenre;
         this.likes = pLikes;
         this.isLiked = pIsLiked;
         this.comments = pComments;
 
-        // render Card
-        this.renderBookCard();
+        this.formattedPrice = this.formatPrice();
 
+        if(pIsLiked){
+            this.likeBtnSrc = "./../assets/icons/like_full.png";
+        }
+        else {
+            this.likeBtnSrc = "./../assets/icons/like_empty.png";
+        }
     }
 
     // #region methods
 
-    renderBookCard() {
-        const bookContainerRef = document.getElementById('book_container');
-        bookContainerRef.innerHTML += getBookTemplate(this);
-
-        // const commentButtonRef = document.getElementById(this.commentBtnId);
-        // commentButtonRef.addEventListener('click', () => this.addComment());
-
-        // const likeIconRef = document.getElementById(this.likeIconId);
-        // likeIconRef.addEventListener('click', () => this.toggleLike());
+    /**
+     * Format the plain price to readable german format. 
+     * @returns the formatted price as string.
+     */
+    formatPrice() {
+        let fPrice = this.price.toFixed(2);
+        fPrice = fPrice.replace('.', ',');
+        return fPrice + " €";
     }
 
-    toggleLike() {
-        if(this.isLiked) {
-            this.isLiked = false;
-            this.likes = this.likes + 1;
-            updateLikeArea();
-        } else {
-            this.isLiked = true;
-            this.likes = this.likes - 1;
-            updateLikeArea();
-        }
-    }
-
-    updateLikeArea() {
-        let iconPath;
-        
-        if(this.isLiked) {
-            iconPath = "heart_full";
-        }
-        else {
-            iconPath = "heart_empty";
-        }
-
-        const iconElement = document.getElementById(this.likeIconId);
-        iconElement.src = iconPath;
-
-        const counter = document.getElementById(this.likeCounterId);
-        counter.innerHTML = this.likes;
-    }
-
-    // EventListener function AddCommentButton
-    addComment(){
-        const creator = "Kevin";
-        const commentMsgRef = document.getElementById(this.commentId);
-
-        this.comments.push(new Comment(creator, commentMsgRef.value));
-        commentMsgRef.value = "";
-
-        this.renderComments();
-    }
-
-    renderComments() {
-        const commentContainerRef = document.getElementById(this.commentContainerId)
-        commentContainerRef.innerHTML = "";
-        for(let i = 0; i < this.comments.length; i++) {
-            const currentComment = comments[i];
-            commentContainerRef += getCommentTemplate(currentComment);
-        }
-    }
     // #endregion methods
 }
 
-class Comment {
-
-    creator; 
-    commentMsg;
-
-    constructor(pCreator, pCommentMsg) {
-        this.creator = pCreator;
-        this.commentMsg = pCommentMsg;
-    }
-}
 
 
 

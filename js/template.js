@@ -1,73 +1,79 @@
+/**
+ * This template function build a html template for a book card with submitted data.
+ * 
+ * @param {Book} book 
+ * @returns a html template filled with data
+ */
 function getBookTemplate (book) {
 
     return /*html*/`
-        <div id="book-0" class="book-card">
+        <div id="book-${book.id}" class="book-card">
             
             <header class="book-header">
-                <h2>Titel</h2>
-                <img src="./assets/img/book_img.png" class="head-img" alt="show a book as template, non-specific">
+                <h2>${book.name}</h2>
+                <img src="./assets/img/book1.jpg" class="head-img" alt="show a book as template, non-specific">
                 <div class="book-info-head">
-                    <span id="book-price"><strong>Price</strong></span>
+                    <span id="book-price"><strong >${book.formattedPrice}</strong></span>
                     <div>
-                        <span>likes</span>
-                        <img id="like-btn" src="./assets/icons/like_empty.png"alt="like icon">
+                        <span>${book.likes}</span>
+                        <img id="${book.likeIconId}" class="like-btn" src="${book.likeBtnSrc}" alt="like icon">
                     </div>
                 </div>
             </header>
 
+            <hr>
             <div class="book-info">
                 <table class="info-table">
                     <tr>
                         <td class="td-align">Autor:</td>
-                        <td id="td-author">author name</td>
+                        <td id="td-author">${book.author}</td>
                     </tr>
                     <tr>
                         <td class="td-align">veröffentlicht:</td>
-                        <td id="td-published">Year 2025</td>
+                        <td id="td-published">${book.publishedYear}</td>
                     </tr>
                     <tr>
                         <td class="td-align">Genre:</td>
-                        <td id="td-genre">genre name</td>
+                        <td id="td-genre">${book.genre}</td>
                     </tr>
                 </table>
             </div>
 
-            <div id="book_0_comment_container" class="comment-container">
+            <hr>
+            <div class="comment-container">
                 <h3>Kommentare:</h3>
                 <div>
-                    <table id="tbl-comment" class="comment-table">
-                        <tr>
-                            <td class="td-align">[name]</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia enim doloribus pariatur dicta repellat quidem assumenda repellendus iusto aliquam culpa molestiae, a doloremque accusantium expedita, blanditiis, rem cupiditate nulla ducimus!</td>
-                        </tr>
-                        <tr>
-                            <td class="td-align">[name]</td>
-                            <td>commentMsg</td>
-                        </tr>
-                        <tr>
-                            <td class="td-align">[name]</td>
-                            <td>commentMsg</td>
-                        </tr>
+                    <table id="${book.commentTableId}" class="comment-table">
+                        <!-- Comments here -->
                     </table>
                 </div>
             </div>
 
+            <hr>
             <div class="add-comment-container">
                 <form >
-                    <input type="text" id="comment-input" placeholder="Schreibe einen Kommentar ...">
-                    <button id="comment-submit-btn">
+                    <input type="text" id="${book.commentInputId}" class="comment-input" placeholder="Schreibe einen Kommentar ...">
+                    <button type="button" id="${book.commentBtnId}" class="comment-submit-btn">
                         <img src="./assets/icons/send.png">
                     </button>
                 </form>
                     
             </div>
         </div>
-    `
+    `;
 }
 
-
-function getCommentTemplate() {
+/**
+ * This template function build a html template for a comment table row with submitted data.
+ * 
+ * @param {Comment} book 
+ * @returns a html template filled with data
+ */
+function getCommentTemplate(comment) {
     return /*html*/`
-        <a>comment</a>
-    `
+        <tr>
+            <td class="td-align">[${comment.creator}]</td>
+            <td>${comment.commentMsg}</td>
+        </tr>
+    `;
 }
