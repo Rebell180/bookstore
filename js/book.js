@@ -53,10 +53,10 @@ export class Book {
         this.formattedPrice = this.formatPrice();
 
         if(pIsLiked){
-            this.likeBtnSrc = "./../assets/icons/like_full.png";
+            this.likeBtnSrc = "/assets/icons/like_full.png";
         }
         else {
-            this.likeBtnSrc = "./../assets/icons/like_empty.png";
+            this.likeBtnSrc = "/assets/icons/like_empty.png";
         }
     }
 

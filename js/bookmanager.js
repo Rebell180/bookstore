@@ -1,4 +1,5 @@
 import { LocalStorageManager } from "./localstoragemanager.js";
+import { TemplateManager } from "./templatemanager.js"
 /**
  * Handles the interaction to show and render the book Cards
  */
@@ -16,7 +17,7 @@ static showBooks() {
     
     for(let i = 0; i < LocalStorageManager.books.length; i++) {
         const currentBook = LocalStorageManager.books[i];
-        bookContainerRef.innerHTML += getBookTemplate(currentBook);
+        bookContainerRef.innerHTML += TemplateManager.getBookTemplate(currentBook);
     }
     
     BookManager.showComments();
@@ -36,7 +37,7 @@ static showComments() {
 
         for(let j = 0; j < currentComments.length; j++) {
             const currentComment = currentComments[j]
-            commentTableRef.innerHTML += getCommentTemplate(currentComment);
+            commentTableRef.innerHTML += TemplateManager.getCommentTemplate(currentComment);
         }
     }
 }
@@ -91,12 +92,12 @@ static toggleLike(index) {
     if(currentBook.isLiked) {
         currentBook.isLiked = false;
         currentBook.likes = currentBook.likes - 1;  
-        currentBook.likeBtnSrc = "./../assets/icons/like_empty.png";
+        currentBook.likeBtnSrc = "/assets/icons/like_empty.png";
     }
     else {
         currentBook.isLiked = true;
         currentBook.likes = currentBook.likes + 1;
-        currentBook.likeBtnSrc = "./../assets/icons/like_full.png";
+        currentBook.likeBtnSrc = "/assets/icons/like_full.png";
     }
 
     LocalStorageManager.setInitialDataToLS();
