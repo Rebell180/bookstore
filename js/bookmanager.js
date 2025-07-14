@@ -98,6 +98,7 @@ export class BookManager {
             currentBook.comments.unshift({'creator':'unknownXP3', 'commentMsg': commentInputRef.value});
             LocalStorageManager.setDataToLS();
             BookManager.updateComments(currentBook);
+            commentInputRef.value = "";
         }
     }
 

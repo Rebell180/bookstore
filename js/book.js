@@ -4,7 +4,7 @@
  */
 export class Book {
 
-    // #region properties
+    // #region attributes
     static bookCount = 0;
     
     id;
@@ -28,7 +28,7 @@ export class Book {
 
     comments = [];
 
-    // #endregion properties
+    // #endregion attributes
 
     constructor(pName, pAuthor, pPrice, pPublishedYear, pGenre, pLikes, pIsLiked, pComments, ) {
         

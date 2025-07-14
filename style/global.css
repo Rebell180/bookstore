@@ -38,15 +38,15 @@ h1, h2 {
 }
 
 h1 {
-    font-size: clamp(16px, 4dvw, 3.8rem);
+    font-size: clamp(16px, 4dvw, 30px);
 }
 
 h2 {
-    font-size: clamp(16px, 3dvw, 3rem);
+    font-size: clamp(16px, 3dvw, 24px);
 }
 
 h3 {
-    font-size: clamp(16px, 2dvw, 2rem);
+    font-size: clamp(16px, 2dvw, 20px);
 }
 
 p, 
@@ -55,7 +55,7 @@ input,
 span, 
 label,
 button , tr{
-    font-size: clamp(1.6rem, 1.5dvh, 2.8rem);
+    font-size: 16px;
     font-weight: bold;
 }
 
