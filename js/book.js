@@ -8,6 +8,7 @@ export class Book {
     static bookCount = 0;
     
     id;
+    likeAreaId;
     likeIconId;
     likeBtnSrc;
     likeCounterId;
@@ -34,6 +35,7 @@ export class Book {
         Book.bookCount++;
 
         this.id = "book-" + Book.bookCount;
+        this.likeAreaId = this.id + "-area";
         this.likeIconId = this.id + "-icon";
         this.likeCounterId = this.id + "-counter";
         this.commentId = this.id + "-comment";
@@ -51,7 +53,7 @@ export class Book {
         this.comments = pComments;
 
         this.formattedPrice = this.formatPrice();
-        this.likeBtnSrc = this.updatelikeBtnSrc();
+        this.likeBtnSrc = this.initlikeBtnSrc();
 
     }
 
@@ -70,7 +72,7 @@ export class Book {
     /**
      * Check the current state of isLiked and set icon path.
      */
-    updatelikeBtnSrc() {
+    initlikeBtnSrc() {
         let temppath = "./assets/icons/like_empty.png";
         if(this.isLiked) {
             temppath =  "./assets/icons/like_full.png";

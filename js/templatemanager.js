@@ -18,9 +18,7 @@ export class TemplateManager {
                     <img src="./assets/img/book1.jpg" class="head-img" alt="show a book as template, non-specific">
                     <div class="book-info-head">
                         <span id="book-price"><strong >${book.formattedPrice}</strong></span>
-                        <div>
-                            <span>${book.likes}</span>
-                            <img id="${book.likeIconId}" class="like-btn" src="${book.likeBtnSrc}" alt="like icon">
+                        <div id="${book.likeAreaId}">  
                         </div>
                     </div>
                 </header>
@@ -67,6 +65,17 @@ export class TemplateManager {
         `;
     }
 
+    /**
+     * This template function build a html template for like area.
+     * @param {Book} book 
+     * @returns a html template. 
+     */
+    static getLikeAreaTemplate(book) {
+        return /*html*/`
+            <span>${book.likes}</span>
+            <img id="${book.likeIconId}" class="like-btn" src="${book.likeBtnSrc}" alt="like icon">
+        `
+    }
 
     /**
     * This template function build a html template for a comment table row with submitted data.
@@ -77,8 +86,7 @@ export class TemplateManager {
     static getCommentTemplate(comment) {
         return /*html*/`
             <tr>
-                <td class="td-align">[${comment.creator}]</td>
-                <td>${comment.commentMsg}</td>
+                <td class="td-align"><span class="creator">[${comment.creator}]:</span> ${comment.commentMsg}</td>
             </tr>
             `;
     }

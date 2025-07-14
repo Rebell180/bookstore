@@ -4,6 +4,10 @@ hr {
     border-color: #68748b;
     margin: 0.5rem 2rem;
 }
+
+.creator{
+    color: darksalmon;
+}
 /* #endregion default */
 
 /* #region Header */
@@ -256,3 +260,4 @@ footer {
   opacity: 1; /* Firefox */
 }
 /* #endregion googled style for input placeholder */
+

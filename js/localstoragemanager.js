@@ -66,7 +66,7 @@ export class LocalStorageManager {
     /**
      * Save the initial book data into the local storage
      */
-    static setInitialDataToLS() {
+    static setDataToLS() {
         localStorage.setItem('books', JSON.stringify(LocalStorageManager.books));
     }
     
@@ -80,7 +80,7 @@ export class LocalStorageManager {
         
         // set initial data when first run
         if(bookDB === null) {
-            LocalStorageManager.setInitialDataToLS();
+            LocalStorageManager.setDataToLS();
             bookDB = JSON.parse(localStorage.getItem('books'));
         }
 
